@@ -1,0 +1,337 @@
+/* Importing the Poppins font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* Resetting default styles and setting global styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif; /* Setting default font family */
+}
+
+/* Styling for the body of the weather app */
+.body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url('images/bg.jpg'); /* Setting background image for the body */
+    background-size: cover;
+    background-position: center;
+}
+
+/* Styling for the main container */
+.container {
+    position: relative;
+    width: 400px;
+    height: 100px;
+    background: rgba(255, 255, 255, .1); /* Setting background color with opacity */
+    backdrop-filter: blur(30px); /* Applying blur effect to the backdrop */
+    border: 2px solid rgba(255, 255, 255, .2); /* Setting border with opacity */
+    border-radius: 16px; /* Adding border radius */
+    padding: 20px; /* Adding padding inside the container */
+    color: #fff; /* Setting text color */
+    transition: height .6s ease; /* Smooth transition for height changes */
+}
+
+/* Styling for the search box */
+.search-box {
+    position: relative;
+    width: 100%;
+    height: 55px;
+    display: flex;
+    align-items: center;
+}
+
+.search-box i {
+    position: absolute;
+    left: 10px;
+    font-size: 28px; /* Setting icon size */
+}
+
+.search-box input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .2); /* Setting border for input */
+    outline: none; /* Removing default focus outline */
+    border-radius: 10px; /* Adding border radius */
+    font-size: 22px; /* Setting font size */
+    color: white; /* Setting text color */
+    font-weight: 500; /* Setting font weight */
+    text-transform: uppercase; /* Transforming text to uppercase */
+    padding: 0 48px 0 42px; /* Adding padding inside the input */
+}
+
+.search-box input::placeholder {
+    color: #fff; /* Setting placeholder text color */
+    text-transform: capitalize; /* Capitalizing placeholder text */
+}
+
+.search-box button {
+    position: absolute;
+    right: 0;
+    width: 40px;
+    height: 100%;
+    background: transparent;
+    border: none; /* Removing button border */
+    outline: none; /* Removing default focus outline */
+    font-size: 28px; /* Setting button icon size */
+    color: #fff; /* Setting button text color */
+    padding: 0 40px 0 5px; /* Adding padding inside the button */
+    cursor: pointer; /* Setting cursor style */
+}
+
+/* Styling for the weather box */
+.weather-box {
+    text-align: center; /* Centering text */
+    margin: 40px 0; /* Adding margin */
+}
+
+/* Styling for weather box, weather details, and not found elements */
+.weather-box,
+.weather-details,
+.not-found {
+    overflow: hidden;
+    visibility: hidden; /* Hiding elements by default */
+}
+
+/* Styling for active weather box, weather details, and not found elements */
+.weather-box.active,
+.weather-details.active,
+.not-found.active {
+    visibility: visible; /* Making elements visible when active */
+}
+
+.weather-box .box,
+.not-found .box {
+    transform: translateY(-100%); /* Moving elements out of view */
+}
+
+.weather-box.active .box,
+.not-found.active .box {
+    transform: translateY(0%); /* Sliding elements into view */
+    transition: transform 1s ease; /* Smooth transition effect */
+    transition-delay: .6s; /* Adding delay to transition effect */
+}
+
+/* Styling for weather details animation */
+.weather-box .box .info-weather {
+    transform: translateY(-120%); /* Moving element out of view */
+}
+
+.container.active .weather-box .box .info-weather,
+.container.active .weather-details .humidity .info-humidity,
+.container.active .weather-details .wind .info-wind {
+    transform: translateY(0%); /* Sliding elements into view */
+    transition: transform 1s ease; /* Smooth transition effect */
+}
+
+.weather-box img {
+    width: 60%; /* Setting image width */
+}
+
+.weather-box .temperature {
+    position: relative;
+    font-size: 64px; /* Setting font size */
+    line-height: 1; /* Setting line height */
+    font-weight: 700; /* Setting font weight */
+    margin: 20px 0 6px -30px; /* Adding margin */
+}
+
+.weather-box .temperature span {
+    position: absolute;
+    font-size: 24px; /* Setting font size */
+    margin-left: 4px; /* Adding margin */
+}
+
+.weather-box .description {
+    font-size: 22px; /* Setting font size */
+    font-weight: 500; /* Setting font weight */
+    text-transform: capitalize; /* Capitalizing text */
+}
+
+/* Styling for weather details */
+.weather-details {
+    position: absolute;
+    bottom: 40px; /* Setting position from bottom */
+    left: 0; /* Aligning to left */
+    width: 100%; /* Setting full width */
+    padding: 0 20px; /* Adding padding */
+    display: flex; /* Displaying as flexbox */
+}
+
+.weather-details .humidity,
+.weather-details .wind {
+    display: flex; /* Displaying as flexbox */
+    align-items: center; /* Aligning items */
+    width: 50%; /* Setting width */
+    transform: translateY(-100%); /* Moving elements out of view */
+}
+
+.weather-details .humidity .info-humidity,
+.weather-details .wind .info-wind {
+    transform: translateY(-100%); /* Moving elements out of view */
+    overflow: hidden; /* Hiding overflow */
+}
+
+.weather-details.active .humidity,
+.weather-details.active .wind {
+    transform: translateY(0%); /* Sliding elements into view */
+    transition: transform 1s ease; /* Smooth transition effect */
+    transition-delay: 1.2s; /* Adding delay to transition effect */
+}
+
+.weather-details .humidity {
+    padding-left: 20px; /* Adding padding */
+    justify-content: flex-start; /* Justifying content */
+}
+
+.weather-details .wind {
+    padding-right: 20px; /* Adding padding */
+    justify-content: flex-end; /* Justifying content */
+}
+
+.weather-details i {
+    font-size: 56px; /* Setting font size */
+    margin-right: 10px; /* Adding margin */
+}
+
+.weather-details span {
+    display: inline-block;
+    font-size: 22px; /* Setting font size */
+    font-weight: 500; /* Setting font weight */
+}
+
+.weather-details p {
+    font-size: 14px; /* Setting font size */
+    font-weight: 500; /* Setting font weight */
+}
+
+/* Styling for not found message */
+.not-found {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Setting full width */
+    text-align: center; /* Centering text */
+    margin-top: 110px; /* Adding margin from top */
+}
+
+.not-found img {
+    width: 65%; /* Setting image width */
+}
+
+.not-found p {
+    font-size: 22px; /* Setting font size */
+    font-weight: 500; /* Setting font weight */
+    margin-top: 12px; /* Adding margin from top */
+}
+
+.city-hide {
+    display: none; /* Hiding element */
+}
+
+/* Styling for cloned weather information */
+#clone-info-weather,
+#clone-info-humidity,
+#clone-info-wind {
+    position: absolute;
+    transform: translateY(-100%); /* Moving element out of view */
+}
+
+#clone-info-weather .weather {
+    transform: translateY(120%); /* Moving element out of view */
+    transition: transform 1s ease, opacity 0s; /* Smooth transition effect */
+    transition-delay: 0s, 2s; /* Adding delays to transitions */
+}
+
+.weather-box:not(.active) #clone-info-weather .weather {
+    opacity: 0; /* Setting opacity to 0 */
+    transition-delay: 0s; /* Resetting transition delay */
+}
+
+.active-clone#clone-info-weather .weather {
+    transform: translateY(0%); /* Sliding element into view */
+}
+
+#clone-info-humidity span,
+#clone-info-wind span {
+    transform: translateY(100%); /* Moving element out of view */
+    transition: transform 1s ease; /* Smooth transition effect */
+}
+
+.active-clone#clone-info-humidity span,
+.active-clone#clone-info-wind span {
+    transform: translateY(0%); /* Sliding element into view */
+}
+
+
+
+/* Media queries for responsiveness */
+@media screen and (max-width: 380px) {
+    .container {
+        max-width: 100%; /* Adjusting maximum width for smaller screens */
+        padding: 10px; /* Adjusting padding for smaller screens */
+    }
+
+    .weather-box .temperature {
+        font-size: 48px; /* Adjusting font size for temperature */
+    }
+
+    .weather-box img {
+        width: 50%; /* Adjusting image width */
+    }
+
+    .weather-details {
+        flex-direction: column; /* Change flex direction to column for stacking */
+        align-items: flex-start; /* Align items to the start of the column */
+    }
+
+
+   .weather-details .humidity,
+    .weather-details .wind {
+        width: 100%; /* Take full width of the container */
+        margin-bottom: 10px; /* Add spacing between humidity and wind */
+        font-size: 18px; /* Adjust font size as needed */
+        justify-content: center ; /* Center the details */
+         /* Center the details */
+    }
+    
+    .not-found img {
+        width: 50%; /* Adjusting image width for not found message */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .weather-box .temperature {
+        font-size: 36px; /* Further adjusting font size for temperature */
+    }
+
+    .weather-box img {
+        width: 40%; /* Further adjusting image width */
+    }
+
+    .weather-details {
+        flex-direction: column; /* Change flex direction to column for stacking */
+        align-items: flex-start; /* Align items to the start of the column */
+    }
+
+    .weather-details .humidity,
+    .weather-details .wind {
+        width: 100%; /* Take full width of the container */
+        margin-bottom: 10px; /* Add spacing between humidity and wind */
+        font-size: 18px; /* Adjust font size as needed */
+        justify-content: center ; /* Center the details */
+         ; /* Center the details */
+    }
+    
+    .weather-details .wind {
+        padding: 0 0 0 30px;
+        
+    }
+    .not-found img {
+        width: 40%; /* Further adjusting image width for not found message */
+    }
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeatherWise</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body class="body" id="body">
+    <!-- Main container for the weather app -->
+    <div class="container">
+        <!-- Search box section -->
+        <div class="search-box">
+            <i class='bx bxs-map'></i> <!-- Icon for map -->
+            <input type="text" placeholder="enter your location"> <!-- Input for location -->
+            <button class="bx bx-search"></button> <!-- Search button -->
+        </div>
+
+        <p class="city-hide">city hide</p> <!-- Hidden paragraph for city display -->
+
+        <!-- Weather box section -->
+        <div class="weather-box">
+            <div class="box">
+                <div class="info-weather">
+                    <div class="weather">
+                        <img src="images/cloud.png"> <!-- Weather icon -->
+                        <p class="temperature">0<span>°C</span></p> <!-- Temperature display -->
+                        <p class="description">Broken Clouds</p> <!-- Weather description -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Weather details section -->
+        <div class="weather-details">
+            <div class="humidity">
+                <i class='bx bx-water'></i> <!-- Icon for humidity -->
+                <div class="text">
+                    <div class="info-humidity">
+                        <span>0%</span> <!-- Humidity percentage -->
+                    </div>
+                    <p>Humidity</p> <!-- Humidity label -->
+                </div>
+            </div>
+
+            <div class="wind">
+                <i class='bx bx-wind'></i> <!-- Icon for wind -->
+                <div class="text">
+                    <div class="info-wind">
+                        <span id="windid">0Km/h</span> <!-- Wind speed -->
+                    </div>
+                    <p>wind Speed</p> <!-- Wind speed label -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Not found section -->
+        <div class="not-found">
+            <div class="box">
+                <img src="images/404.png" alt="404"> <!-- 404 image -->
+                <p>Oops! Location not found !</p> <!-- Message for location not found -->
+            </div>
+        </div>
+    </div>
+    <!-- JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>
