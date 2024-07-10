@@ -4,10 +4,11 @@
 WeatherWise is a simple weather application that allows users to check current weather conditions based on location using the OpenWeatherMap API.   
 
 ## DEMO IMAGES
-
-![weatherlap2](https://github.com/shadow-slave/weatherwise/assets/148051614/fde66d8d-8f1f-4d69-a062-78f9184ae372)
-![weatherlap](https://github.com/shadow-slave/weatherwise/assets/148051614/07df53fc-c91f-417f-a670-243354faf184)
-![weathermob](https://github.com/shadow-slave/weatherwise/assets/148051614/6fcb7623-33fa-4cb1-aef8-df7f0f5362e9)
+<div>
+<img src="https://github.com/shadow-slave/weatherwise/assets/148051614/fde66d8d-8f1f-4d69-a062-78f9184ae372" height=250 width=300 />
+<img src="https://github.com/shadow-slave/weatherwise/assets/148051614/07df53fc-c91f-417f-a670-243354faf184" height=250 width=300 />
+<img src="https://github.com/shadow-slave/weatherwise/assets/148051614/6fcb7623-33fa-4cb1-aef8-df7f0f5362e9" height=250 width=300 />
+</div>
 
 ## Features
 
