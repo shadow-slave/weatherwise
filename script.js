@@ -5,7 +5,7 @@ const weatherBox = document.querySelector('.weather-box');
 const weatherDetails = document.querySelector('.weather-details');
 const error404 = document.querySelector('.not-found');
 const cityHide = document.querySelector('.city-hide');
-
+console.log("new updated");
 // Function to fetch weather data
 function fetchWeatherData(city, lat, lon) {
     const APIKey = '913413ddf34b1cb4d948473869aa8a08';
